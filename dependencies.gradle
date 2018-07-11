@@ -1,0 +1,34 @@
+ext {
+    supportVersion = '26.1.0'
+    constraintLayoutVersion = '1.1.2'
+    rxJavaVersion = "2.1.1"
+    rxAndroidVersion = "2.0.2"
+    retrofitVersion = '2.3.0'
+    jUnitVersion = '4.12'
+    testRunnerVersion = '1.0.1'
+    espressoVersion = '3.0.1'
+    mockitoVersion = '2.15.0'
+    powermockVersion = '2.0.0-beta.5'
+
+    appDependencies = [
+            support              : "com.android.support:appcompat-v7:${supportVersion}",
+            design               : "com.android.support:design:${supportVersion}",
+            recyclerview         : "com.android.support:recyclerview-v7:${supportVersion}",
+            constraintLayout     : "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}",
+
+            rxJava               : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxAndroid            : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            retrofit             : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitConverterGson: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            retrofitAdapterRxJava: "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
+
+            jUnit                : "junit:junit:${jUnitVersion}",
+            testRunner           : "com.android.support.test:runner:${testRunnerVersion}",
+            espresso             : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+            mockito              : "org.mockito:mockito-core:${mockitoVersion}",
+            mockitoAndroid       : "org.mockito:mockito-android:${mockitoVersion}",
+            powermockApi         : "org.powermock:powermock-api-mockito2:${powermockVersion}",
+            powermockModule      : "org.powermock:powermock-module-junit4:${powermockVersion}",
+    ]
+}
+
