@@ -4,14 +4,14 @@ import com.carles.common.utils.SharedPreferencesHelper;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.powermock.reflect.Whitebox;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import static junit.framework.Assert.assertTrue;
-import static org.mockito.Mockito.CALLS_REAL_METHODS;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+@RunWith(MockitoJUnitRunner.class)
 public class BaseLocalDatasourceTest {
 
     private BaseLocalDatasource datasource;
@@ -20,8 +20,8 @@ public class BaseLocalDatasourceTest {
 
     @Before
     public void setup() {
-        datasource = mock(BaseLocalDatasource.class, CALLS_REAL_METHODS);
-        Whitebox.setInternalState(datasource, "sharedPreferencesHelper", sharedPreferencesHelper);
+        datasource = new BaseLocalDatasource() {};
+        datasource.sharedPreferencesHelper = sharedPreferencesHelper;
     }
 
     @Test

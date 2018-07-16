@@ -27,16 +27,18 @@ android {
 }
 
 dependencies {
-    api appDependencies.support
+    implementation appDependencies.support
     api appDependencies.rxJava
     api appDependencies.rxAndroid
     api appDependencies.retrofit
     api appDependencies.retrofitConverterGson
     api appDependencies.retrofitAdapterRxJava
 
+    api appDependencies.dagger
+    annotationProcessor appDependencies.daggerCompilerProcessor
+
     testImplementation appDependencies.jUnit
     testImplementation appDependencies.mockito
     testImplementation appDependencies.powermockApi
     testImplementation appDependencies.powermockModule
-
 }

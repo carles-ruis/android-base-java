@@ -2,14 +2,13 @@ package com.carles.common.data.datasource;
 
 import com.carles.common.utils.SharedPreferencesHelper;
 
+import javax.inject.Inject;
+
 public abstract class BaseLocalDatasource {
 
-    protected static final long EXPIRE_TIME = 1000 * 60;
-    protected final SharedPreferencesHelper sharedPreferencesHelper;
-
-    public BaseLocalDatasource() {
-        this.sharedPreferencesHelper = SharedPreferencesHelper.getInstance();
-    }
+    private static final long EXPIRE_TIME = 1000 * 60;
+    @Inject
+    protected SharedPreferencesHelper sharedPreferencesHelper;
 
     protected long calculateCacheExpirationTime() {
         return System.currentTimeMillis() + EXPIRE_TIME;

@@ -33,11 +33,11 @@ dependencies {
     implementation appDependencies.recyclerview
     implementation appDependencies.constraintLayout
 
+    api appDependencies.dagger
+    annotationProcessor appDependencies.daggerCompilerProcessor
+
     testImplementation appDependencies.jUnit
     testImplementation appDependencies.mockito
     testImplementation appDependencies.powermockApi
     testImplementation appDependencies.powermockModule
-    androidTestImplementation appDependencies.mockitoAndroid
-    androidTestImplementation appDependencies.testRunner
-    androidTestImplementation appDependencies.espresso
 }
