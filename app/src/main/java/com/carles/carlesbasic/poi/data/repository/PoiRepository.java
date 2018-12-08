@@ -7,10 +7,12 @@ import com.carles.carlesbasic.poi.model.Poi;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import io.reactivex.Maybe;
 import io.reactivex.Single;
 
+@Singleton
 public class PoiRepository {
 
     private final PoiLocalDatasource poiLocalDatasource;
