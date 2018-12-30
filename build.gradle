@@ -8,7 +8,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath 'io.realm:realm-gradle-plugin:4.3.3'
     }
 }
@@ -16,7 +16,7 @@ buildscript {
 allprojects {
     ext {
         compileSdkVersion = 26
-        buildToolsVersion = '27.0.3'
+        buildToolsVersion = '28.0.3'
         minSdkVersion = 21
         targetSdkVersion = 26
 

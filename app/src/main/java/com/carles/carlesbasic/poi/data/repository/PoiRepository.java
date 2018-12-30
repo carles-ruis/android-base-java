@@ -12,7 +12,6 @@ import javax.inject.Singleton;
 import io.reactivex.Maybe;
 import io.reactivex.Single;
 
-@Singleton
 public class PoiRepository {
 
     private final PoiLocalDatasource poiLocalDatasource;
