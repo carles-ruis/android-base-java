@@ -25,16 +25,22 @@ public class PoiLocalDatasource extends BaseLocalDatasource {
     }
 
     public Maybe<Poi> getPoiDetail(String id) {
-        if (isExpired(PoiRealmObject.class.getName(), id)) {
-            return Maybe.empty();
-        }
+        return Maybe.create(onSubscribe -> {
+            if (isExpired(PoiRealmObject.class.getName(), id)) {
+                onSubscribe.onComplete();
+                return;
+            }
 
-        Realm realm = Realm.getDefaultInstance();
-        PoiRealmObject poiRealmObject = realm.where(PoiRealmObject.class).equalTo(PoiRealmObject.ID, id).findFirst();
-        Poi poi = poiRealmObject == null ? null : poiMapper.realmObjectToModel(poiRealmObject);
-        realm.close();
+            Realm realm = Realm.getDefaultInstance();
+            PoiRealmObject poiRealmObject = realm.where(PoiRealmObject.class).equalTo(PoiRealmObject.ID, id).findFirst();
+            Poi poi = poiRealmObject == null ? null : poiMapper.realmObjectToModel(poiRealmObject);
+            realm.close();
 
-        return poi == null ? Maybe.empty() : Maybe.just(poi);
+            if (poi != null) {
+                onSubscribe.onSuccess(poi);
+            }
+            onSubscribe.onComplete();
+        });
     }
 
     public void persist(Poi poi) {
@@ -44,8 +50,7 @@ public class PoiLocalDatasource extends BaseLocalDatasource {
         realm.copyToRealmOrUpdate(realmObject);
         realm.commitTransaction();
         realm.close();
-        sharedPreferencesHelper
-            .setCacheExpirationTime(PoiRealmObject.class.getName(), poi.id, calculateCacheExpirationTime());
+        sharedPreferencesHelper.setCacheExpirationTime(PoiRealmObject.class.getName(), poi.id, calculateCacheExpirationTime());
     }
 
 }
